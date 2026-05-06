@@ -1,6 +1,6 @@
 ﻿**References**
 
-*BIST 100 Portfolio Diversification via MST  —  MIS Network Optimization Project*
+*Selected Stocks Portfolio Diversification via MST  —  MIS Network Optimization Project*
 # **Academic References**
 1. Mantegna, R. N. (1999). Hierarchical structure in financial markets. The European Physical Journal B, 11(1), 193–197. https://doi.org/10.1007/s100510050929
 1. Onnela, J. P., Chakraborti, A., Kaski, K., Kertesz, J., & Kanto, A. (2003). Asset trees and asset graphs in financial markets. Physica Scripta, T106, 48–54. https://doi.org/10.1238/Physica.Topical.106a00048
