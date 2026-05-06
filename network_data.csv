@@ -1,0 +1,86 @@
+=== NODE DATA ===
+Stock,Sector,Degree,Node_Type,Avg_Distance_To_Others
+ASTOR,Energy,5,Hub,1.1993
+TKFEN,Holdings,4,Hub,1.2182
+OYAKC,Cement,4,Hub,1.2051
+TAVHL,Aviation,3,Intermediate,1.193
+OTKAR,Automotive,3,Intermediate,1.1951
+TTKOM,Telecom,3,Intermediate,1.2356
+TABGD,Food & Beverage,3,Intermediate,1.2073
+KCHOL,Holdings,3,Intermediate,1.2245
+GARAN,Banks,3,Intermediate,1.2456
+VESTL,Consumer Appliances,2,Intermediate,1.2289
+CIMSA,Cement,2,Intermediate,1.225
+EREGL,Steel,2,Intermediate,1.234
+PGSUS,Aviation,2,Intermediate,1.1968
+YKBNK,Banks,2,Intermediate,1.2252
+ISCTR,Banks,2,Intermediate,1.2424
+AKBNK,Banks,2,Intermediate,1.2104
+PETKM,Energy,2,Intermediate,1.2035
+DOAS,Automotive,2,Intermediate,1.2248
+AEFES,Food & Beverage,2,Intermediate,1.2085
+BIMAS,Retail,2,Intermediate,1.215
+SAHOL,Holdings,2,Intermediate,1.1946
+ASELS,Technology,2,Intermediate,1.2044
+MAVI,Retail,2,Intermediate,1.2297
+KAREL,Technology,2,Intermediate,1.2347
+AKSEN,Energy,2,Intermediate,1.1868
+EKGYO,Real Estate,2,Intermediate,1.2555
+TUPRS,Energy,1,Leaf,1.1945
+SKBNK,Banks,1,Leaf,1.2378
+THYAO,Aviation,1,Leaf,1.2157
+ENJSA,Energy,1,Leaf,1.1811
+CCOLA,Food & Beverage,1,Leaf,1.2197
+TCELL,Telecom,1,Leaf,1.2353
+ZOREN,Energy,1,Leaf,1.1759
+ULKER,Food & Beverage,1,Leaf,1.2187
+ENKAI,Real Estate,1,Leaf,1.2354
+TOASO,Automotive,1,Leaf,1.2143
+FROTO,Automotive,1,Leaf,1.2056
+KRDMD,Steel,1,Leaf,1.2308
+AGHOL,Holdings,1,Leaf,1.2132
+DOHOL,Holdings,1,Leaf,1.2136
+ARCLK,Consumer Appliances,1,Leaf,1.2497
+
+=== EDGE DATA (MST) ===
+Stock_1,Sector_1,Stock_2,Sector_2,Distance,Correlation_rho,Edge_Type,Risk_Level
+EREGL,Steel,KRDMD,Steel,0.7207,0.7403,Intra-Sector,High
+ASTOR,Energy,ENJSA,Energy,0.7208,0.7402,Intra-Sector,High
+GARAN,Banks,YKBNK,Banks,0.7239,0.738,Intra-Sector,High
+ASTOR,Energy,AKSEN,Energy,0.7444,0.7229,Intra-Sector,High
+DOAS,Automotive,FROTO,Automotive,0.7587,0.7122,Intra-Sector,High
+ULKER,Food & Beverage,TABGD,Food & Beverage,0.7639,0.7082,Intra-Sector,High
+KCHOL,Holdings,DOHOL,Holdings,0.7688,0.7045,Intra-Sector,High
+GARAN,Banks,ISCTR,Banks,0.7693,0.7041,Intra-Sector,High
+TOASO,Automotive,OTKAR,Automotive,0.7741,0.7004,Intra-Sector,High
+CIMSA,Cement,OYAKC,Cement,0.7748,0.6998,Intra-Sector,Medium
+DOAS,Automotive,OTKAR,Automotive,0.7802,0.6956,Intra-Sector,Medium
+AEFES,Food & Beverage,TABGD,Food & Beverage,0.7834,0.6931,Intra-Sector,Medium
+ASTOR,Energy,ZOREN,Energy,0.7842,0.6925,Intra-Sector,Medium
+TUPRS,Energy,ASTOR,Energy,0.7844,0.6924,Intra-Sector,Medium
+THYAO,Aviation,TAVHL,Aviation,0.7886,0.6891,Intra-Sector,Medium
+BIMAS,Retail,MAVI,Retail,0.7891,0.6887,Intra-Sector,Medium
+ASTOR,Energy,PETKM,Energy,0.8075,0.674,Intra-Sector,Medium
+YKBNK,Banks,SKBNK,Banks,0.8147,0.6681,Intra-Sector,Medium
+VESTL,Consumer Appliances,ARCLK,Consumer Appliances,0.8168,0.6664,Intra-Sector,Medium
+CCOLA,Food & Beverage,AEFES,Food & Beverage,0.8219,0.6622,Intra-Sector,Medium
+ASELS,Technology,KAREL,Technology,0.8267,0.6583,Intra-Sector,Medium
+EKGYO,Real Estate,ENKAI,Real Estate,0.8408,0.6465,Intra-Sector,Medium
+KCHOL,Holdings,SAHOL,Holdings,0.8431,0.6446,Intra-Sector,Medium
+KCHOL,Holdings,TKFEN,Holdings,0.8462,0.642,Intra-Sector,Medium
+TKFEN,Holdings,AGHOL,Holdings,0.8555,0.6341,Intra-Sector,Medium
+AKBNK,Banks,ISCTR,Banks,0.8831,0.6101,Intra-Sector,Medium
+PGSUS,Aviation,TAVHL,Aviation,0.9441,0.5543,Intra-Sector,Medium
+TCELL,Telecom,TTKOM,Telecom,1.0611,0.437,Intra-Sector,Medium
+TABGD,Food & Beverage,TKFEN,Holdings,1.0977,0.3975,Cross-Sector,Low
+PGSUS,Aviation,OYAKC,Cement,1.1037,0.3909,Cross-Sector,Low
+SAHOL,Holdings,CIMSA,Cement,1.1138,0.3797,Cross-Sector,Low
+TTKOM,Telecom,TKFEN,Holdings,1.1166,0.3766,Cross-Sector,Low
+EREGL,Steel,OYAKC,Cement,1.1196,0.3732,Cross-Sector,Low
+TTKOM,Telecom,EKGYO,Real Estate,1.1213,0.3713,Cross-Sector,Low
+TAVHL,Aviation,MAVI,Retail,1.125,0.3672,Cross-Sector,Low
+GARAN,Banks,PETKM,Energy,1.1256,0.3665,Cross-Sector,Low
+AKSEN,Energy,OYAKC,Cement,1.138,0.3525,Cross-Sector,Low
+AKBNK,Banks,KAREL,Technology,1.1441,0.3455,Cross-Sector,Low
+ASELS,Technology,VESTL,Consumer Appliances,1.1512,0.3374,Cross-Sector,Low
+BIMAS,Retail,OTKAR,Automotive,1.1516,0.3369,Cross-Sector,Low
