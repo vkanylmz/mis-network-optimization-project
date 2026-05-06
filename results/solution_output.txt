@@ -9,37 +9,139 @@ This project addresses that challenge by modeling stock relationships as a netwo
 2.1  Nodes
 Each node in the network represents a publicly traded company on Borsa Istanbul. This project includes 41 stocks across 13 sectors:
 
-SectorExample StocksCountColorBanksGARAN, AKBNK, YKBNK, ISCTR, SKBNK5BlueAviationTHYAO, PGSUS, TAVHL3OrangeEnergyTUPRS, ASTOR, ENJSA, AKSEN, PETKM, ZOREN6GreenHoldingsKCHOL, SAHOL, TKFEN, DOHOL, AGHOL5CyanAutomotiveDOAS, FROTO, TOASO, OTKAR4GrayOther sectorsTelecom, Technology, Retail, F&B, RE, Steel, Cement, Appliances18Various
+Sector
+Example Stocks
+Count
+Color
+Banks
+GARAN, AKBNK, YKBNK, ISCTR, SKBNK
+5
+Blue
+Aviation
+THYAO, PGSUS, TAVHL
+3
+Orange
+Energy
+TUPRS, ASTOR, ENJSA, AKSEN, PETKM, ZOREN
+6
+Green
+Holdings
+KCHOL, SAHOL, TKFEN, DOHOL, AGHOL
+5
+Cyan
+Automotive
+DOAS, FROTO, TOASO, OTKAR
+4
+Gray
+Other sectors
+Telecom, Technology, Retail, F&B, RE, Steel, Cement, Appliances
+18
+Various
+
 2.2  Edges
 An edge between two stocks represents a measurable statistical relationship between their daily price movements. The complete graph contains 820 possible edges (all pairs). After applying the MST algorithm, only the 40 most structurally important edges remain.
 2.3  Weights - Mantegna Distance
 Edge weights are computed using the Mantegna (1999) distance metric, which converts Pearson correlation (rho) into a proper Euclidean distance:
-d(i,j)  =  v( 2 × (1 - ???) )
+d(i,j)  =  v( 2 Ã— (1 - ???) )
 A short edge (low distance) means high correlation - stocks move together. A long edge means low correlation - stocks move independently. This transformation allows the MST algorithm to treat correlation as a spatial distance problem.
 3. Algorithm - Minimum Spanning Tree (Kruskal)
 The Minimum Spanning Tree (MST) algorithm connects all nodes in the network using the minimum total edge weight, without creating any cycles. It acts as a filter - removing redundant connections and revealing only the strongest structural relationships in the market.
 Kruskal's algorithm is used (via NetworkX):
-• Sort all 820 edges by distance weight in ascending order
-• Greedily add the shortest edge that does not create a cycle
-• Stop when all 41 nodes are connected - result is 40 edges
+â€¢ Sort all 820 edges by distance weight in ascending order
+â€¢ Greedily add the shortest edge that does not create a cycle
+â€¢ Stop when all 41 nodes are connected - result is 40 edges
 Time complexity: O(E log E) where E is the number of edges.
 The MST is the standard approach in financial econophysics for studying market correlation structure (Mantegna 1999, Onnela et al. 2003).
 4. Key Findings
 4.1  Hub Nodes
 KCHOL (Koc Holding) and SAHOL (Sabanci Holding) emerged as the most connected nodes with degrees of 10 and 9 respectively. This is expected - as major conglomerates with subsidiaries across banking, energy, and automotive sectors, their prices co-move with multiple parts of the market simultaneously.
 4.2  Highest Correlation Pairs (Risk Clusters)
-PairDistanceCorrelation (rho)RecommendationGARAN <-> YKBNK0.45980.8943Avoid holding bothYKBNK <-> ISCTR0.48360.8831Avoid holding bothAKBNK <-> YKBNK0.49500.8775Avoid holding both
+Pair
+Distance
+Correlation (rho)
+Recommendation
+GARAN <-> YKBNK
+0.4598
+0.8943
+Avoid holding both
+YKBNK <-> ISCTR
+0.4836
+0.8831
+Avoid holding both
+AKBNK <-> YKBNK
+0.4950
+0.8775
+Avoid holding both
+
 4.3  Best Diversification Pairs
-PairDistanceCorrelation (rho)AssessmentAKSEN <-> ASELS1.40500.0130Near-zero correlationASELS <-> DOAS1.40470.0134Near-zero correlationTAVHL <-> TUPRS1.39640.0250Excellent diversifier
+Pair
+Distance
+Correlation (rho)
+Assessment
+AKSEN <-> ASELS
+1.4050
+0.0130
+Near-zero correlation
+ASELS <-> DOAS
+1.4047
+0.0134
+Near-zero correlation
+TAVHL <-> TUPRS
+1.3964
+0.0250
+Excellent diversifier
+
 5. Recommended Diversified Portfolio
 The algorithm selects one stock per sector, prioritizing leaf nodes (structurally most independent) and maximizing average distance to already-selected stocks:
-StockSectorReason for SelectionTOASOAutomotiveLeaf node - low connectivityTHYAOAviationLeaf node - independent from financial stocksSKBNKBanksLeaf node - most distant bank from other sectorsOYAKCCementLeaf node - sector with few cross-sector connectionsARCLKConsumer AppliancesLeaf nodeENJSAEnergyLeaf node - renewable energy, different from TUPRSULKERFood & BeverageLeaf node - defensive consumer stockAGHOLHoldingsLowest connectivity among holdingsENKAIReal EstateLeaf nodeBIMASRetailLeaf node - domestic retail, low market correlationKRDMDSteelLeaf nodeKARELTechnologyLeaf node - small-cap techTCELLTelecomLeaf node - utility-like, defensive
+Stock
+Sector
+Reason for Selection
+TOASO
+Automotive
+Leaf node - low connectivity
+THYAO
+Aviation
+Leaf node - independent from financial stocks
+SKBNK
+Banks
+Leaf node - most distant bank from other sectors
+OYAKC
+Cement
+Leaf node - sector with few cross-sector connections
+ARCLK
+Consumer Appliances
+Leaf node
+ENJSA
+Energy
+Leaf node - renewable energy, different from TUPRS
+ULKER
+Food & Beverage
+Leaf node - defensive consumer stock
+AGHOL
+Holdings
+Lowest connectivity among holdings
+ENKAI
+Real Estate
+Leaf node
+BIMAS
+Retail
+Leaf node - domestic retail, low market correlation
+KRDMD
+Steel
+Leaf node
+KAREL
+Technology
+Leaf node - small-cap tech
+TCELL
+Telecom
+Leaf node - utility-like, defensive
+
 Average pairwise correlation of selected portfolio: rho ~ 0.19
 A value close to 0 indicates genuine diversification. A fully correlated portfolio would have rho = 1.0.
 6. Tools & Implementation
-• Python 3.x - primary programming language
-• NetworkX - graph construction and MST algorithm
-• yfinance - live price data from Yahoo Finance (1 year, daily adjusted close)
-• pandas / numpy - data processing and correlation computation
-• matplotlib - network visualization with sector color-coding
+â€¢ Python 3.x - primary programming language
+â€¢ NetworkX - graph construction and MST algorithm
+â€¢ yfinance - live price data from Yahoo Finance (1 year, daily adjusted close)
+â€¢ pandas / numpy - data processing and correlation computation
+â€¢ matplotlib - network visualization with sector color-coding
 
